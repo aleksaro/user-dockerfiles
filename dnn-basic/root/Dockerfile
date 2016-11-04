@@ -1,6 +1,6 @@
 #
-# dnn-basic-root: Basic Dockerfile for deep learning with Keras, Lasagne, and
-# ml-pyxis with Jupyter.
+# dnn-basic-root: Basic Dockerfile for deep learning with scikit-image, Lasagne,
+# Keras, and ml-pyxis with Jupyter.
 #
 # This Dockerfile ensures that the container starts as root.
 #
@@ -16,8 +16,9 @@ MAINTAINER Aleksander Rognhaugen
 USER root
 
 
-# Install Lasagne, Keras, and ml-pyxis
+# Install scikit-image, Lasagne, Keras, and ml-pyxis
 RUN pip3 install --upgrade \
+    scikit-image \
     git+git://github.com/Lasagne/Lasagne.git@$master \
     git+git://github.com/fchollet/keras.git@$master \
     git+git://github.com/vicolab/ml-pyxis.git@$master
@@ -32,6 +33,7 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
 RUN mkdir /root/shared && \
     mkdir /root/data && \
     mkdir /root/.jupyter && \
+    mkdir /root/.misc && \
     mkdir -p -m 700 /root/.local/share/jupyter
 
 
@@ -43,6 +45,13 @@ COPY run_jupyter.sh /root/.jupyter/
 # Make sure that the run file for jupyter is runnable + add shortcut
 RUN chmod +x /root/.jupyter/run_jupyter.sh && \
     echo "alias run_jupyter=/root/.jupyter/run_jupyter.sh" \
+    >> /root/.bash_aliases
+
+
+# Add a script that makes it easier to update some packages
+COPY upgrade_packages.sh /root/.misc/
+RUN chmod +x /root/.misc/upgrade_packages.sh && \
+    echo "alias upgrade_packages=/root/.misc/upgrade_packages.sh" \
     >> /root/.bash_aliases
 
 

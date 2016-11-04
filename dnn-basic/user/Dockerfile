@@ -1,6 +1,6 @@
 #
-# dnn-basic-user: Basic Dockerfile for deep learning with Keras, Lasagne, and
-# ml-pyxis with Jupyter.
+# dnn-basic-user: Basic Dockerfile for deep learning with scikit-image, Lasagne,
+# Keras, and ml-pyxis with Jupyter.
 #
 # This Dockerfile ensures that the container starts as a user and *not* as root.
 #
@@ -18,6 +18,7 @@ USER root
 
 # Install Lasagne, Keras, and ml-pyxis
 RUN pip3 install --upgrade \
+    scikit-image \
     git+git://github.com/Lasagne/Lasagne.git@$master \
     git+git://github.com/fchollet/keras.git@$master \
     git+git://github.com/vicolab/ml-pyxis.git@$master
@@ -53,6 +54,7 @@ USER $NB_USER
 RUN mkdir $HOME/shared && \
     mkdir $HOME/data && \
     mkdir $HOME/.jupyter && \
+    mkdir $HOME/.misc && \
     mkdir -p -m 700 $HOME/.local/share/jupyter
 
 
@@ -71,6 +73,13 @@ RUN chown -R $NB_USER:users $HOME/.jupyter
 # Make sure that the run file for jupyter is runnable + add shortcut
 RUN chmod +x $HOME/.jupyter/run_jupyter.sh && \
     echo "alias run_jupyter=$HOME/.jupyter/run_jupyter.sh" \
+    >> $HOME/.bash_aliases
+
+
+# Add a script that makes it easier to update some packages
+COPY upgrade_packages.sh $HOME/.misc/
+RUN chmod +x $HOME/.misc/upgrade_packages.sh && \
+    echo "alias upgrade_packages=$HOME/.misc/upgrade_packages.sh" \
     >> $HOME/.bash_aliases
 
 

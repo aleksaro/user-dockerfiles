@@ -2,8 +2,9 @@
 dnn-basic
 =========
 
-Basic Dockerfile for deep learning with `Keras`_, `Lasagne`_, and `ml-pyxis`_
-with `Jupyter`_. There are two different flavours to select from:
+Basic Dockerfile for deep learning with `Keras`_, `Lasagne`_, `ml-pyxis`_, and
+`scikit-image`_ with `Jupyter`_. There are two different flavours to select
+from:
 
 * ``root`` : the container will start as root
 * ``user`` : the container will start as a user
@@ -80,6 +81,7 @@ Use ``nvidia-smi`` to see your GPU device minor numbers.
 
 .. Links
 
+.. _scikit-image: http://scikit-image.org/
 .. _Keras: https://github.com/fchollet/keras
 .. _Lasagne: https://github.com/Lasagne/Lasagne
 .. _ml-pyxis: https://github.com/vicolab/ml-pyxis
