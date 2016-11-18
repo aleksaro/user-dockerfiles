@@ -19,6 +19,10 @@ function upgrade_packages {
     pip3 install --upgrade git+git://github.com/fchollet/keras.git@$master
 
     echo ''
+    echo 'ml-pyxis...'
+    pip3 install --upgrade git+git://github.com/vicolab/ml-pyxis.git@$master
+
+    echo ''
     echo 'Upgrading of packages has finished.'
 }
 

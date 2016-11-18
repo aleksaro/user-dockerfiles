@@ -19,7 +19,8 @@ Dockerfile:
 
 .. code-block:: bash
 
-  docker build -t dnn-basic[:tag] -f ./Dockerfile .
+  cd <root/user>
+  docker build -t dnn-basic[:tag] -f Dockerfile .
 
 With the image built, ``nvidia-docker run`` can be used to create a Docker
 container with access to your GPU devices - ``docker run`` can also be used but
