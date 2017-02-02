@@ -6,10 +6,10 @@
 #
 
 # Base image is python-theano-tf
-FROM aleksaro/python3-theano-tf:latest
+FROM aleksaro/python3-nn:latest
 
 
-MAINTAINER Aleksander Rognhaugen
+LABEL maintainer "Aleksander Rognhaugen"
 
 
 # Run the following as `root`

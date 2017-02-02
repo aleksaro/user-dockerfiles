@@ -9,7 +9,7 @@
 FROM dnn-basic-root:latest
 
 
-MAINTAINER Aleksander Rognhaugen and Igor Barros Barbosa
+LABEL maintainer "Aleksander Rognhaugen and Igor Barros Barbosa"
 
 
 # Run the following as `root`
