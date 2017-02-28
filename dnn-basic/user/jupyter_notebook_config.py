@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # jupyter_notebook_config.py: Sets up miscellaneous options for Jupyter
-# notebooks such as port, self-signed certificate, and password protection.
+# notebooks such as port and a self-signed certificate.
 #
 #   # Copyright (c) Jupyter Development Team.
 #   # Distributed under the terms of the Modified BSD License.
@@ -54,9 +54,3 @@ if 'USE_HTTPS' in os.environ:
 
     # Specify certfile location for Jupyter notebook
     c.NotebookApp.certfile = PEM_FILE
-
-# Set a password if PASSWORD is set
-if 'PASSWORD' in os.environ:
-    from IPython.lib import passwd
-    c.NotebookApp.password = passwd(os.environ['PASSWORD'])
-    del os.environ['PASSWORD']

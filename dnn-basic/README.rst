@@ -25,25 +25,23 @@ Dockerfile:
 With the image built, ``nvidia-docker run`` can be used to create a Docker
 container with access to your GPU devices - ``docker run`` can also be used but
 is slightly more cumbersome. A container with Jupyter and Tensorboard, with
-HTTPS and password protection enabled for Jupyter, can be set up using this
-command:
+HTTPS enabled for Jupyter, can be set up using this command:
 
 .. code-block:: bash
 
-  nvidia-docker run -p <local>:8888 -p <local>:6006 -e "PASSWORD=<password>" -e "USE_HTTPS=1" -d -it dnn-basic[:tag]
+  nvidia-docker run -p <local>:8888 -p <local>:6006 -e "USE_HTTPS=1" -d -it dnn-basic[:tag]
 
 The ``-d`` option detaches the container and ``-it`` ensures that the detached
 container is correctly daemonized. 8888 and 6006 are the internal ports for
-Jupyter and TensorBoard, respectively. Make sure to set your Jupyter notebook
-password by modifying ``<password>``. HTTPS for Jupyter can be disabled by
+Jupyter and TensorBoard, respectively. HTTPS for Jupyter can be disabled by
 removing ``-e "USE_HTTPS=1"``.
 
 A daemonized Docker container (``-d``) can be run by issuing
-``nvidia-docker attach`` like this:
+``docker attach`` like this:
 
 .. code-block:: bash
 
-  nvidia-docker attach <container id>
+  docker attach <container id>
 
 The Docker container ID can be found by running ``docker ps``.
 
