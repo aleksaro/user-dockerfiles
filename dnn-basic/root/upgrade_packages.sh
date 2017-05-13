@@ -21,8 +21,8 @@ function upgrade_packages () {
         echo 'Upgrading ml-pyxis...'
         pip3 install --upgrade git+git://github.com/vicolab/ml-pyxis.git@$master
     elif [ $1 = 'pytorch' ]; then
-        echo 'Installing PyTorch v. 0.1.11.post5 ...'
-        pip3 install --upgrade http://download.pytorch.org/whl/cu80/torch-0.1.11.post5-cp35-cp35m-linux_x86_64.whl
+        echo 'Installing PyTorch v. 0.1.12.post2 ...'
+        pip3 install --upgrade http://download.pytorch.org/whl/cu80/torch-0.1.12.post2-cp35-cp35m-linux_x86_64.whl
         pip3 install --upgrade torchvision
     elif [ $1 = 'tensorflow-cpu' ]; then
         echo 'Upgrading TensorFlow [CPU]...'
@@ -39,7 +39,7 @@ function upgrade_packages () {
         echo "* 'lasagne' - Install/upgrade to the latest version of Lasagne"
         echo "* 'keras' - Install/upgrade to the latest version of Keras"
         echo "* 'ml-pyxis' - Install/upgrade to the latest version of ml-pyxis"
-        echo "* 'pytorch' - Install PyTorch 0.1.11.post5"
+        echo "* 'pytorch' - Install PyTorch 0.1.12.post2"
         echo "* 'tensorflow-cpu' - Install/upgrade to the latest version of TensorFlow [CPU]"
         echo "* 'tensorflow-gpu' - Install/upgrade to the latest version of TensorFlow [GPU]"
         echo 'Invoke an upgrade by writing <script name> followed by one of the'
