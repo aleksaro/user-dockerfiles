@@ -24,6 +24,14 @@ RUN pip3 install --upgrade \
     git+git://github.com/vicolab/ml-pyxis.git@$master
 
 
+# Ensure that locales is installed (also clean up apt-get)
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    locales && \
+    apt-get clean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
+
+
 # Set correct locale for locale-aware programs or libraries
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
