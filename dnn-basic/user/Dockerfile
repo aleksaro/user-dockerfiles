@@ -1,12 +1,12 @@
 #
-# dnn-basic-user: Basic Dockerfile for deep learning with scikit-image, Lasagne,
+# dnn-basic-user: Basic Dockerfile for deep learning with scikit-image,
 # Keras, and ml-pyxis with Jupyter.
 #
 # This Dockerfile ensures that the container starts as a user and *not* as root.
 #
 
-# Base image is python-theano-tf
-FROM aleksaro/python3-nn:latest
+# Base image is python3-ml
+FROM aleksaro/python3-ml:latest
 
 
 LABEL maintainer "Aleksander Rognhaugen"
@@ -16,10 +16,9 @@ LABEL maintainer "Aleksander Rognhaugen"
 USER root
 
 
-# Install Lasagne, Keras, and ml-pyxis
+# Install scikit-image, Keras, and ml-pyxis
 RUN pip3 install --upgrade \
     scikit-image \
-    git+git://github.com/Lasagne/Lasagne.git@$master \
     git+git://github.com/fchollet/keras.git@$master \
     git+git://github.com/vicolab/ml-pyxis.git@$master
 
@@ -49,11 +48,9 @@ ENV HOME /home/$NB_USER
 RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
 
 
-# Copy over `.theanorc` and `.bash_aliases` from /root and give ownership
+# Copy over `.bash_aliases` from /root and give ownership
 RUN cp /root/.bash_aliases $HOME && \
-    cp /root/.theanorc $HOME && \
-    chown -R $NB_USER:users $HOME/.bash_aliases && \
-    chown -R $NB_USER:users $HOME/.theanorc
+    chown -R $NB_USER:users $HOME/.bash_aliases
 
 
 # Switch to `NB_USER`

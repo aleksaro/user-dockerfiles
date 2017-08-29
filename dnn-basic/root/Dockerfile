@@ -1,12 +1,12 @@
 #
-# dnn-basic-root: Basic Dockerfile for deep learning with scikit-image, Lasagne,
+# dnn-basic-root: Basic Dockerfile for deep learning with scikit-image,
 # Keras, and ml-pyxis with Jupyter.
 #
 # This Dockerfile ensures that the container starts as root.
 #
 
-# Base image is python-theano-tf
-FROM aleksaro/python3-nn:latest
+# Base image is python3-ml
+FROM aleksaro/python3-ml:latest
 
 
 LABEL maintainer "Aleksander Rognhaugen"
@@ -16,10 +16,9 @@ LABEL maintainer "Aleksander Rognhaugen"
 USER root
 
 
-# Install scikit-image, Lasagne, Keras, and ml-pyxis
+# Install scikit-image, Keras, and ml-pyxis
 RUN pip3 install --upgrade \
     scikit-image \
-    git+git://github.com/Lasagne/Lasagne.git@$master \
     git+git://github.com/fchollet/keras.git@$master \
     git+git://github.com/vicolab/ml-pyxis.git@$master
 

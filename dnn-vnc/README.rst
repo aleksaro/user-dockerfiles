@@ -2,7 +2,7 @@
 dnn-vnc
 =======
 
-Dockerfile for deep learning with `Keras`_, `Lasagne`_, `ml-pyxis`_, and
+Dockerfile for deep learning with `Keras`_, `ml-pyxis`_, and
 `scikit-image`_ using `VNC`_ (Virtual Network Computing).
 
 
@@ -37,11 +37,11 @@ Issue the following command to correctly containerise the docker image:
 
 The ``-d`` option detaches the container and ``-it`` ensures that the detached
 container is correctly daemonized. A daemonized Docker container (``-d``) can
-be run by issuing ``nvidia-docker attach`` like this:
+be run by issuing ``docker attach`` like this:
 
 .. code-block:: bash
 
-  nvidia-docker attach <container id>
+  docker attach <container id>
 
 The Docker container ID can be found by running ``docker ps``.
 
@@ -99,7 +99,6 @@ Use ``nvidia-smi`` to see your GPU device minor numbers.
 
 .. _scikit-image: http://scikit-image.org/
 .. _Keras: https://github.com/fchollet/keras
-.. _Lasagne: https://github.com/Lasagne/Lasagne
 .. _ml-pyxis: https://github.com/vicolab/ml-pyxis
 .. _VNC: https://en.wikipedia.org/wiki/Virtual_Network_Computing
 .. _Docker attach documentation: https://docs.docker.com/engine/reference/commandline/attach/

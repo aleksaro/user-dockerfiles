@@ -1,11 +1,11 @@
 #
-# dnn-vnc-root: Dockerfile for deep learning with Keras, Lasagne, ml-pyxis, and
+# dnn-vnc-root: Dockerfile for deep learning with Keras, ml-pyxis, and
 # scikit-image using VNC (Virtual Network Computing).
 #
 # This Dockerfile ensures that the container starts as root.
 #
 
-# Base image is s locally built image of dnn-basic
+# Base image is a locally built image of dnn-basic
 FROM dnn-basic-root:latest
 
 
