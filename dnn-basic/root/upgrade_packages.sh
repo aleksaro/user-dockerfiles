@@ -22,14 +22,14 @@ function upgrade_packages () {
         pip3 install --upgrade git+git://github.com/vicolab/ml-pyxis.git@$master
     elif [ $1 = 'pytorch' ]; then
         echo 'Installing PyTorch v. 0.3.0.post4 ...'
-        pip3 install --upgrade http://download.pytorch.org/whl/cu80/torch-0.3.0.post4-cp35-cp35m-linux_x86_64.whl
-        pip3 install --upgrade torchvision
+        pip3 install --upgrade --no-cache-dir http://download.pytorch.org/whl/cu90/torch-0.3.0.post4-cp35-cp35m-linux_x86_64.whl
+        pip3 install --upgrade --no-cache-dir torchvision
     elif [ $1 = 'tensorflow-cpu' ]; then
         echo 'Upgrading TensorFlow [CPU]...'
-        pip3 install --upgrade tensorflow
+        pip3 install --upgrade --no-cache-dir tensorflow
     elif [ $1 = 'tensorflow-gpu' ]; then
         echo 'Upgrading TensorFlow [GPU]...'
-        pip3 install --upgrade tensorflow-gpu
+        pip3 install --upgrade --no-cache-dir tensorflow-gpu
     elif [ $1 = 'help' ]; then
         echo 'Help text ::'
         echo 'This script can be used to install/upgrade selected packages.'
