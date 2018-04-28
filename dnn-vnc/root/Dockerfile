@@ -1,5 +1,5 @@
 #
-# dnn-vnc-root: Dockerfile for deep learning with Keras, ml-pyxis, and
+# dnn-vnc-root: Dockerfile for deep learning with Keras, PyTorch, ml-pyxis, and
 # scikit-image using VNC (Virtual Network Computing).
 #
 # This Dockerfile ensures that the container starts as root.

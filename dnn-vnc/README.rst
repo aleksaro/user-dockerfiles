@@ -2,7 +2,7 @@
 dnn-vnc
 =======
 
-Dockerfile for deep learning with `Keras`_, `ml-pyxis`_, and
+Dockerfile for deep learning with `Keras`_, `PyTorch`_, `ml-pyxis`_, and
 `scikit-image`_ using `VNC`_ (Virtual Network Computing).
 
 
@@ -99,6 +99,7 @@ Use ``nvidia-smi`` to see your GPU device minor numbers.
 
 .. _scikit-image: http://scikit-image.org/
 .. _Keras: https://github.com/fchollet/keras
+.. _PyTorch: http://pytorch.org/
 .. _ml-pyxis: https://github.com/vicolab/ml-pyxis
 .. _VNC: https://en.wikipedia.org/wiki/Virtual_Network_Computing
 .. _Docker attach documentation: https://docs.docker.com/engine/reference/commandline/attach/

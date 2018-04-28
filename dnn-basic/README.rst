@@ -2,7 +2,7 @@
 dnn-basic
 =========
 
-Basic Dockerfile for deep learning with `Keras`_, `ml-pyxis`_, and
+Basic Dockerfile for deep learning with `Keras`_, `PyTorch`_, `ml-pyxis`_, and
 `scikit-image`_ with `Jupyter`_. There are two different flavours to select
 from:
 
@@ -82,6 +82,7 @@ Use ``nvidia-smi`` to see your GPU device minor numbers.
 
 .. _scikit-image: http://scikit-image.org/
 .. _Keras: https://github.com/fchollet/keras
+.. _PyTorch: http://pytorch.org/
 .. _ml-pyxis: https://github.com/vicolab/ml-pyxis
 .. _Jupyter: http://jupyter.org/
 .. _Docker attach documentation: https://docs.docker.com/engine/reference/commandline/attach/

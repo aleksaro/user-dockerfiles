@@ -5,7 +5,7 @@ user-dockerfiles
 
 This repository contains a set of miscellaneous high-level Dockerfiles.
 
-* dnn-basic : basic Dockerfile for deep learning with Keras and Lasagne with Jupyter.
+* dnn-basic : basic Dockerfile for deep learning with Keras and PyTorch with Jupyter.
 * dnn-vnc: extension of ``dnn-basic`` with VNC (Virtual Network Computing) capabilities.
 
 

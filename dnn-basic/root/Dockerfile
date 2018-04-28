@@ -1,6 +1,6 @@
 #
 # dnn-basic-root: Basic Dockerfile for deep learning with scikit-image,
-# Keras, and ml-pyxis with Jupyter.
+# Keras, PyTorch, and ml-pyxis with Jupyter.
 #
 # This Dockerfile ensures that the container starts as root.
 #
@@ -16,11 +16,13 @@ LABEL maintainer "Aleksander Rognhaugen"
 USER root
 
 
-# Install scikit-image, Keras, and ml-pyxis
-RUN pip3 install --upgrade \
+# Install scikit-image, Keras, ml-pyxis, and PyTorch
+RUN pip3 install --upgrade --no-cache-dir \
     scikit-image \
     git+git://github.com/fchollet/keras.git@$master \
-    git+git://github.com/vicolab/ml-pyxis.git@$master
+    git+git://github.com/vicolab/ml-pyxis.git@$master \
+    http://download.pytorch.org/whl/cu90/torch-0.4.0-cp35-cp35m-linux_x86_64.whl \
+    torchvision
 
 
 # Ensure that locales is installed (also clean up apt-get)
