@@ -22,14 +22,13 @@ Dockerfile:
   cd <root/user>
   docker build -t dnn-basic[:tag] -f Dockerfile .
 
-With the image built, ``nvidia-docker run`` can be used to create a Docker
-container with access to your GPU devices - ``docker run`` can also be used but
-is slightly more cumbersome. A container with Jupyter and Tensorboard, with
-HTTPS enabled for Jupyter, can be set up using this command:
+With the image built, `nvidia-docker`_ can be used to create a Docker
+container with access to your GPU devices. A container with Jupyter and
+Tensorboard, with HTTPS enabled for Jupyter, can be set up using this command:
 
 .. code-block:: bash
 
-  nvidia-docker run -p <local>:8888 -p <local>:6006 -e "USE_HTTPS=1" -d -it dnn-basic[:tag]
+  docker run --runtime=nvidia -p <local>:8888 -p <local>:6006 -e "USE_HTTPS=1" -d -it dnn-basic[:tag]
 
 The ``-d`` option detaches the container and ``-it`` ensures that the detached
 container is correctly daemonized. 8888 and 6006 are the internal ports for
@@ -60,20 +59,20 @@ can be used for this, e.g. for ``root``:
 
 .. code-block:: bash
 
-  nvidia-docker run -v <local volume>:/root/shared ...
+  docker run -v <local volume>:/root/shared ...
 
 
 -------------
 GPU isolation
 -------------
 
-GPUs can be isolated by using the environment variable ``NV_GPU`` in front of
-``nvidia-docker``. For example, the command below isolates GPU 3, 5, and 6 with
-the Docker container:
+GPUs can be isolated by using the environment variable
+``NVIDIA_VISIBLE_DEVICES`` when executing the ``run`` command. For example, the
+command below isolates GPU 3, 5, and 6 with the Docker container:
 
 .. code-block:: bash
 
-  NV_GPU=3,5,6 nvidia-docker run ...
+  docker run  --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=3,5,6 ...
 
 Use ``nvidia-smi`` to see your GPU device minor numbers.
 
@@ -86,3 +85,4 @@ Use ``nvidia-smi`` to see your GPU device minor numbers.
 .. _ml-pyxis: https://github.com/vicolab/ml-pyxis
 .. _Jupyter: http://jupyter.org/
 .. _Docker attach documentation: https://docs.docker.com/engine/reference/commandline/attach/
+.. nvidia-docker: https://github.com/NVIDIA/nvidia-docker

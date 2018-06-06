@@ -1,9 +1,8 @@
-=======
-dnn-vnc
-=======
+======
+dnn-c9
+======
 
-Dockerfile for deep learning with `Keras`_, `PyTorch`_, `ml-pyxis`_, and
-`scikit-image`_ using `VNC`_ (Virtual Network Computing).
+Dockerfile for deep learning with `Cloud9`_.
 
 
 Usage
@@ -14,14 +13,14 @@ final image on. The Dockerfile uses the root version of ``dnn-basic`` as a
 parent image. See the ``dnn-basic`` directory in this repository for information
 on how to build that Dockerfile.
 
-Àssuming an image of the root version of ``dnn-basic`` called
+Assuming an image of the root version of ``dnn-basic`` called
 ``dnn-basic-root:latest`` exists, then the following command can be used to
 build an image from this Dockerfile:
 
 .. code-block:: bash
 
   cd root
-  docker build -t dnn-vnc[:tag] -f Dockerfile .
+  docker build -t dnn-c9[:tag] -f Dockerfile .
 
 With the image built, `nvidia-docker`_ can be used to create a Docker
 container with access to your GPU devices. This Dockerfile inherits all
@@ -32,7 +31,7 @@ Issue the following command to correctly containerise the docker image:
 
 .. code-block:: bash
 
-  docker run --runtime=nvidia -p <VNC port>:5900 -d -it dnn-vnc[:tag]
+  docker run --runtime=nvidia -p <Cloud9 port>:8181 -d -it dnn-c9[:tag]
 
 The ``-d`` option detaches the container and ``-it`` ensures that the detached
 container is correctly daemonized. A daemonized Docker container (``-d``) can
@@ -44,26 +43,21 @@ be run by issuing ``docker attach`` like this:
 
 The Docker container ID can be found by running ``docker ps``.
 
-With the container attached a VNC server can be started by running ``run_vnc``.
-Be sure to note down the password generated and exported to ``$VNC_PASSWORD``.
+With the container attached Cloud9 can be started by running the following
+command:
+
+.. code-block:: bash
+
+  run_c9 --auth <username>:<password> -w /root/shared/
+
+The ``--auth`` option is required and will let you set up a username and
+password for logging in to the Cloud9 server. The ``-w`` is the location of
+the workspace directory inside the docker environment. We recommend to let this
+be one of your shared container volumes so that you can edit files on your local
+machine.
 
 To detach from a container without stopping it you can type the escape sequence
 ``Ctrl-p`` + ``Ctrl-q`` (see `Docker attach documentation`_).
-
-
------------
-VNC viewers
------------
-
-VNC viewers are used to connect to VNC servers. We recommend using one of the
-following:
-
-* `TightVNC`_
-* `RealVNC`_
-
-To connect to your VNC server, simply input the server IP address followed by
-the user specified port that was set up when running the docker image, i.e.
-``<VNC port>``.
 
 
 --------------
@@ -96,12 +90,5 @@ Use ``nvidia-smi`` to see your GPU device minor numbers.
 
 .. Links
 
-.. _scikit-image: http://scikit-image.org/
-.. _Keras: https://github.com/fchollet/keras
-.. _PyTorch: http://pytorch.org/
-.. _ml-pyxis: https://github.com/vicolab/ml-pyxis
-.. _VNC: https://en.wikipedia.org/wiki/Virtual_Network_Computing
-.. _Docker attach documentation: https://docs.docker.com/engine/reference/commandline/attach/
-.. _TightVNC: http://www.tightvnc.com/
-.. _RealVNC: https://www.realvnc.com/download/viewer/
+.. _Cloud9: https://github.com/c9/core
 .. nvidia-docker: https://github.com/NVIDIA/nvidia-docker
