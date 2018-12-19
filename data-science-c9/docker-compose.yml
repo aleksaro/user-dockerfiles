@@ -1,0 +1,19 @@
+version: '2.3'
+
+services:
+  datasciencec9:
+    image: aleksaro/data-science-c9:latest
+    command: ["/usr/bin/byobu"]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0
+      - USE_HTTPS=1
+    ports:
+      - "8888:8888"
+      - "6006:6006"
+      - "8080:8080"
+    restart: always
+    runtime: nvidia
+    stdin_open: true
+    tty: true
+    volumes:
+      - "~/shared:/root/shared"
