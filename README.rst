@@ -65,15 +65,15 @@ configuration keys are used to define what a service is. Here is an
 explanation of the keys we have used:
 
 * ``image`` : name of the Docker image that should run for this service.
-* ``command`` : startup command. Here, the Unix shell bash Bash will run.
+* ``command`` : startup command. Here, the Unix shell Bash will run.
 * ``environment`` : a list of environment variables. ``NVIDIA_VISIBLE_DEVICES``
   is used to isolate GPUs with the help of GPU device minor numbers. In our
   case the GPU numbered 0 will be made available in the Docker container formed
   by this service.
 * ``ports`` : a list of exposed ports.
 * ``restart`` : restart policy, where ``no`` is the default policy. ``always``
-  will will ensure that Compose always attempts to restart the service, for
-  example, after a reboot. Please refer to the `restart documentation`_.
+  ensures that Compose *always* attempts to restart the service(s), for example,
+  after a reboot. Please refer to the `restart documentation`_.
 * ``runtime`` : key available in version ``2.3`` that enables us to specify the
   NVIDIA runtime.
 * ``stdin_open`` and ``tty``: must be set to ``true`` to use an interactive

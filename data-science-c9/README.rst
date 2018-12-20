@@ -30,10 +30,10 @@ Example usage of ``runc9``:
   runc9 --auth <username>:<password> -w /root/shared/
 
 The ``--auth`` option is required and will let you set up a username and
-password for logging in to the Cloud9 server. The ``-w`` is the location of
-the workspace directory inside the docker environment. We recommend to let this
-be one of your shared container volumes so that you can edit files on your local
-machine.
+password for logging in to the Cloud9 server. The ``-w`` option is the location
+of the workspace directory inside the docker environment. We recommend to let
+this be one of your shared container volumes so that you can edit files on your
+local machine.
 
 
 .. Links
